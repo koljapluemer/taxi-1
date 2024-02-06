@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://pqwvunhjr7yu"]
+
+[node name="World" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 140.0
+offset_top = 38.0
+offset_right = 180.0
+offset_bottom = 61.0
+text = "enjoy the game"
