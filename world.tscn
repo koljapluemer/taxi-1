@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://pqwvunhjr7yu"]
+[gd_scene load_steps=3 format=3 uid="uid://pqwvunhjr7yu"]
+
+[ext_resource type="Texture2D" uid="uid://4ro884yxcehn" path="res://Assets/Car.png" id="1_o3jhs"]
+[ext_resource type="Texture2D" uid="uid://b2tdwsu6wx0uq" path="res://Assets/Taxi.png" id="2_yeot7"]
 
 [node name="World" type="Node2D"]
 
@@ -8,3 +11,13 @@ offset_top = 38.0
 offset_right = 180.0
 offset_bottom = 61.0
 text = "enjoy the game"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(663, 114)
+scale = Vector2(0.145616, 0.145616)
+texture = ExtResource("1_o3jhs")
+
+[node name="Taxi" type="Sprite2D" parent="."]
+position = Vector2(246, 214)
+scale = Vector2(0.1235, 0.1235)
+texture = ExtResource("2_yeot7")
