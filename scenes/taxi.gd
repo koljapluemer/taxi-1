@@ -4,15 +4,21 @@ var lane = 0
 
 const MAX_LANE = 2
 const MIN_LANE = -3
-const LANE_HEIGHT = 100
+const LANE_HEIGHT = 120
 
+
+const START_POS_X = 100
 var middle_of_screen
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	middle_of_screen = get_viewport().size.y / 2
-	position.y = middle_of_screen + LANE_HEIGHT * lane
+	reset_position()
 
+func reset_position():
+	lane = 0
+	position.y = middle_of_screen + LANE_HEIGHT * lane
+	position.x = START_POS_X
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
