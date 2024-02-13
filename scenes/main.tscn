@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw63nmlies7iu"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_lfdpv"]
+[ext_resource type="PackedScene" uid="uid://c5gkwq4mohq1" path="res://scenes/taxi.tscn" id="2_cyvod"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_lfdpv")
+
+[node name="Taxi" parent="." instance=ExtResource("2_cyvod")]
+position = Vector2(124, 321)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5gkwq4mohq1"]
+
+[ext_resource type="Texture2D" uid="uid://b2tdwsu6wx0uq" path="res://assets/Taxi.png" id="1_y78x8"]
+[ext_resource type="Script" path="res://scenes/taxi.gd" id="2_c7otu"]
+
+[node name="Taxi" type="Sprite2D"]
+position = Vector2(336, 324)
+scale = Vector2(0.136883, 0.136883)
+texture = ExtResource("1_y78x8")
+centered = false
+script = ExtResource("2_c7otu")

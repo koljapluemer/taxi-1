@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2tdwsu6wx0uq"
-path="res://.godot/imported/Taxi.png-2c47ddb031ee32fb3936305b22c23cff.ctex"
+path="res://.godot/imported/Taxi.png-fbd074d236733e3337afa96bb525c834.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Taxi.png"
-dest_files=["res://.godot/imported/Taxi.png-2c47ddb031ee32fb3936305b22c23cff.ctex"]
+source_file="res://assets/Taxi.png"
+dest_files=["res://.godot/imported/Taxi.png-fbd074d236733e3337afa96bb525c834.ctex"]
 
 [params]
 
