@@ -11,8 +11,12 @@ const START_SPEED : float = 1000.0
 const MAX_SPEED : float = 25.0
 var screen_size: Vector2 
 
+var score = 0
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	screen_size = get_window().size
 	new_game()
 
@@ -22,18 +26,31 @@ func new_game():
 	$Ground.position.x = 0
 	$Taxi.reset_position()
 	speed = START_SPEED
+	score = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print("speed: ", speed)
+	spawn_cars()
+
 	$Taxi.position.x += speed * delta
 	$Camera.position.x += speed * delta
 
 	# update ground pos (check if we moved the camera more than 1.5x the screen width)
 	if $Camera.position.x - $Ground.position.x > screen_size.x * 1.2:
 		$Ground.position.x += screen_size.x
-
+	
+	score += delta * speed
 
 func _on_button_button_up():
 	pass
+
+func spawn_cars():
+	# chance 1/100 to spawn a car every frame
+	var rng = RandomNumberGenerator.new()
+	if rng.randi_range(0, 100) == 0:
+		var car = car_scene.instantiate()
+		car.position.x = screen_size.x + 100 + score 
+		car.position.y = randf_range(0, screen_size.y)
+		add_child(car)
+		cars.append(car)
