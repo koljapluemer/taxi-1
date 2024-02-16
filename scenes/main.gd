@@ -2,7 +2,9 @@ extends Node2D
 
 
 var car_scene = preload("res://scenes/car.tscn")
+var passenger_scene = preload("res://scenes/passenger.tscn")
 var cars: Array = []
+var passengers: Array = []
 
 var speed: float
 const SCORE_MODIFIER : float = 0.1
@@ -32,6 +34,7 @@ func new_game():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	spawn_cars()
+	spawn_passengers()
 
 	$Taxi.position.x += speed * delta
 	$Camera.position.x += speed * delta
@@ -54,3 +57,14 @@ func spawn_cars():
 		car.position.y = randf_range(0, screen_size.y)
 		add_child(car)
 		cars.append(car)
+
+func spawn_passengers():
+	# chance 1/100 to spawn a passenger every frame
+	var rng = RandomNumberGenerator.new()
+	if rng.randi_range(0, 50) == 0:
+		var passenger = passenger_scene.instantiate()
+		passenger.position.x = screen_size.x + 100 + score 
+		# spawn at bottom of screen
+		passenger.position.y = randf_range(screen_size.y - 130, screen_size.y - 100)
+		add_child(passenger)
+		passengers.append(passenger)
