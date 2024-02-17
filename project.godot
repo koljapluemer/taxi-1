@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://scenes/Globals.gd"
-Signals="*res://scenes/Signals.gd"
 
 [dotnet]
 

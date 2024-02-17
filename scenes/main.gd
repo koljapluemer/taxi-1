@@ -60,3 +60,6 @@ func spawn_passengers():
 		passenger.position.y = randf_range(screen_size.y - 130, screen_size.y - 100)
 		add_child(passenger)
 		passengers.append(passenger)
+
+func game_over():
+	get_tree().paused = true

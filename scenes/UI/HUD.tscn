@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://de1wp6jwp5a1d"]
+
+[ext_resource type="PackedScene" uid="uid://ct4vh7nun8gjx" path="res://scenes/UI/RestartButton.tscn" id="1_d267g"]
+
+[node name="Hud" type="CanvasGroup"]
+
+[node name="RestartButton" parent="." instance=ExtResource("1_d267g")]
+offset_left = 498.0
+offset_top = 283.0
+offset_right = 646.0
+offset_bottom = 346.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
