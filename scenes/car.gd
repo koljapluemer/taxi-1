@@ -12,6 +12,5 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Taxi":
-		# pause game
-		get_tree().paused = true
-
+		# call game_over in main scene to end the game 
+		get_tree().get_root().get_node("Main").game_over()

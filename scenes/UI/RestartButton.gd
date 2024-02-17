@@ -11,6 +11,5 @@ func _process(delta):
 	pass
 
 func _on_pressed():
-	print("Button pressed")
 	# run new_game in main scene
 	get_tree().get_root().get_node("Main").new_game()

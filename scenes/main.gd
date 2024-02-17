@@ -18,6 +18,7 @@ func _ready():
 	new_game()
 
 func new_game():
+	$Interface.get_node("RestartButton").hide()
 	# reset Taxi, Camera, Ground and speed
 	$Camera.position.x = 0
 	$Ground.position.x = 0
@@ -62,4 +63,6 @@ func spawn_passengers():
 		passengers.append(passenger)
 
 func game_over():
+	$Interface.get_node("RestartButton").show()
 	get_tree().paused = true
+
