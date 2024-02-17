@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddhyplkdb1agc"]
+[gd_scene load_steps=3 format=3 uid="uid://ddhyplkdb1agc"]
 
 [ext_resource type="Texture2D" uid="uid://4ro884yxcehn" path="res://assets/Car.png" id="1_g310n"]
+[ext_resource type="Script" path="res://scenes/car.gd" id="2_53u3y"]
 
 [node name="Car" type="Sprite2D"]
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_g310n")
 centered = false
+script = ExtResource("2_53u3y")
