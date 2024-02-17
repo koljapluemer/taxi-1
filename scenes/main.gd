@@ -45,17 +45,16 @@ func _on_button_button_up():
 	pass
 
 func spawn_cars():
-	# chance 1/100 to spawn a car every frame
 	var rng = RandomNumberGenerator.new()
-	if rng.randi_range(0, 100) == 0:
+	if rng.randi_range(0, 30) == 0:
 		var car = car_scene.instantiate()
 		car.position.x = screen_size.x + 100 + score 
-		car.position.y = randf_range(0, screen_size.y)
+		var random_lane = rng.randi_range(Globals.MIN_LANE + 1, Globals.MAX_LANE - 1)
+		car.position.y = Globals.middle_of_screen + Globals.LANE_HEIGHT * random_lane
 		add_child(car)
 		cars.append(car)
 
 func spawn_passengers():
-	# chance 1/100 to spawn a passenger every frame
 	var rng = RandomNumberGenerator.new()
 	if rng.randi_range(0, 50) == 0:
 		var passenger = passenger_scene.instantiate()
