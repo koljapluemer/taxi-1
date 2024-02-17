@@ -24,6 +24,14 @@ func new_game():
 	$Ground.position.x = 0
 	$Taxi.reset_position()
 	score = 0
+	# delete all cars and passengers
+	for car in cars:
+		car.queue_free()
+	for passenger in passengers:
+		passenger.queue_free()
+	cars = []
+	passengers = []
+	get_tree().paused = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
