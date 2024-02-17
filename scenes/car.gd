@@ -11,8 +11,7 @@ func _process(delta):
 	position.x -= Globals.CAR_SPEED * delta
 
 func _on_body_entered(body):
-	print("body entered")
-	if body.name == "Player":
-		print("Player hit by car!")
-		body.die()
-		queue_free()
+	if body.name == "Taxi":
+		# pause game
+		get_tree().paused = true
+

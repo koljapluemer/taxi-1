@@ -25,3 +25,4 @@ func _process(delta):
 		position.y = Globals.middle_of_screen + Globals.LANE_HEIGHT * lane
 
 	move_and_collide(Vector2(speed * delta, 0))
+
