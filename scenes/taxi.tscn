@@ -6,10 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5onao"]
 size = Vector2(1008.16, 460.247)
 
-[node name="Taxi" type="CharacterBody2D"]
+[node name="Taxi" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(336, 324)
 scale = Vector2(0.136883, 0.136883)
-collision_layer = 3
 script = ExtResource("2_c7otu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

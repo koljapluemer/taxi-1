@@ -6,7 +6,6 @@ var passenger_scene = preload("res://scenes/passenger.tscn")
 var cars: Array = []
 var passengers: Array = []
 
-var speed: float
 var screen_size: Vector2 
 
 var score = 0
@@ -23,7 +22,6 @@ func new_game():
 	$Camera.position.x = 0
 	$Ground.position.x = 0
 	$Taxi.reset_position()
-	speed = Globals.START_SPEED
 	score = 0
 
 
@@ -32,18 +30,13 @@ func _process(delta):
 	spawn_cars()
 	spawn_passengers()
 
-	# $Taxi.position.x += speed * delta
-	# use move_and_collide instead of setting position directly
-	var collision = $Taxi.move_and_collide(Vector2(speed * delta, 0))
-	if collision:
-		print("collision")
-	$Camera.position.x += speed * delta
+	$Camera.position.x += Globals.speed * delta
 
 	# update ground pos (check if we moved the camera more than 1.5x the screen width)
 	if $Camera.position.x - $Ground.position.x > screen_size.x * 1.2:
 		$Ground.position.x += screen_size.x
 	
-	score += delta * speed
+	score += delta * Globals.speed
 
 func _on_button_button_up():
 	pass

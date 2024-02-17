@@ -12,11 +12,13 @@ const MAX_SPEED : float = 1500.0
 const CAR_SPEED : float = 200.0
 
 var middle_of_screen
+var speed: float
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	middle_of_screen = get_viewport().size.y / 2
+	speed = START_SPEED
 
 
 
