@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://scenes/Globals.gd"
+
 [dotnet]
 
 project/assembly_name="taxi 1"

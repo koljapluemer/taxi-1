@@ -7,10 +7,6 @@ var cars: Array = []
 var passengers: Array = []
 
 var speed: float
-const SCORE_MODIFIER : float = 0.1
-const SPEED_MODIFIER : float = 0.002
-const START_SPEED : float = 1000.0
-const MAX_SPEED : float = 25.0
 var screen_size: Vector2 
 
 var score = 0
@@ -27,7 +23,7 @@ func new_game():
 	$Camera.position.x = 0
 	$Ground.position.x = 0
 	$Taxi.reset_position()
-	speed = START_SPEED
+	speed = Globals.START_SPEED
 	score = 0
 
 
