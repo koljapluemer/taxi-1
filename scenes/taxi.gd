@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 var lane = 0
-var speed: float = Globals.START_SPEED
 
 const START_POS_X = 100
 
@@ -23,6 +22,10 @@ func _process(delta):
 	elif Input.is_action_just_pressed("ui_down"):
 		lane = min(lane + 1, Globals.MAX_LANE)
 		position.y = Globals.middle_of_screen + Globals.LANE_HEIGHT * lane
+	if lane == Globals.MAX_LANE:
+		Globals.speed = 0
+	else:
+		Globals.speed = Globals.BASE_SPEED
 
-	move_and_collide(Vector2(speed * delta, 0))
+	move_and_collide(Vector2(Globals.speed * delta, 0))
 

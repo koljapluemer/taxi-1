@@ -33,6 +33,8 @@ func new_game():
 	passengers = []
 	get_tree().paused = false
 
+	Globals.speed = Globals.BASE_SPEED
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
