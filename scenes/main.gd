@@ -32,7 +32,11 @@ func _process(delta):
 	spawn_cars()
 	spawn_passengers()
 
-	$Taxi.position.x += speed * delta
+	# $Taxi.position.x += speed * delta
+	# use move_and_collide instead of setting position directly
+	var collision = $Taxi.move_and_collide(Vector2(speed * delta, 0))
+	if collision:
+		print("collision")
 	$Camera.position.x += speed * delta
 
 	# update ground pos (check if we moved the camera more than 1.5x the screen width)

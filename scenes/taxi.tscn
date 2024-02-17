@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5gkwq4mohq1"]
+[gd_scene load_steps=4 format=3 uid="uid://c5gkwq4mohq1"]
 
 [ext_resource type="Texture2D" uid="uid://b2tdwsu6wx0uq" path="res://assets/Taxi.png" id="1_y78x8"]
 [ext_resource type="Script" path="res://scenes/taxi.gd" id="2_c7otu"]
 
-[node name="Taxi" type="Sprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5onao"]
+size = Vector2(1008.16, 460.247)
+
+[node name="Taxi" type="CharacterBody2D"]
 position = Vector2(336, 324)
 scale = Vector2(0.136883, 0.136883)
-texture = ExtResource("1_y78x8")
-centered = false
+collision_layer = 3
 script = ExtResource("2_c7otu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_y78x8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 47.4858)
+shape = SubResource("RectangleShape2D_5onao")
