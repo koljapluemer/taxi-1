@@ -16,6 +16,8 @@ func _ready():
 	randomize()
 	screen_size = get_window().size
 	new_game()
+	# Signal connections
+	$Taxi.taxi_stopped_for_pickup.connect(initiate_pickup)
 
 func new_game():
 	$Interface.get_node("RestartButton").hide()
@@ -76,3 +78,6 @@ func game_over():
 	$Interface.get_node("RestartButton").show()
 	get_tree().paused = true
 
+
+func initiate_pickup():
+	print("initiate_pickup")

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/taxi.gd" id="2_c7otu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5onao"]
-size = Vector2(1008.16, 460.247)
+size = Vector2(854.745, 460.247)
 
 [node name="Taxi" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(336, 324)
@@ -15,7 +15,7 @@ script = ExtResource("2_c7otu")
 texture = ExtResource("1_y78x8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 47.4858)
+position = Vector2(76.7075, 47.4858)
 shape = SubResource("RectangleShape2D_5onao")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
