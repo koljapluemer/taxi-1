@@ -39,7 +39,6 @@ func new_game():
 
 	# set random buildings for the first tiles in the 0th row
 	var origin_tile_source_id = $TileMap.get_cell_source_id(0, Vector2(0, 0))
-	print(origin_tile_source_id)
 	for i in range(10):
 		spawn_random_tile(i, 0)
 
@@ -115,7 +114,6 @@ func initiate_pickup():
 		Globals.destination_type = Globals.DESTINATION_TYPES.pick_random()
 		$Interface.get_node("DialogueText").text = "I want to go to the " + Globals.destination_type
 		closest_passenger.move_to_taxi($Taxi)
-		passengers.erase(closest_passenger)
 
 
 func spawn_random_tile(x, y):
