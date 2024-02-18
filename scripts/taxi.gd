@@ -25,7 +25,7 @@ func _process(delta):
 	elif Input.is_action_just_pressed("ui_down"):
 		lane = min(lane + 1, Globals.MAX_LANE)
 		position.y = Globals.middle_of_street + Globals.LANE_HEIGHT * lane
-		if lane == Globals.MAX_LANE:
+		if lane == Globals.MAX_LANE && !Globals.passenger_in_taxi:
 			Globals.speed = 0
 			taxi_stopped_for_pickup.emit()
 

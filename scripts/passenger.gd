@@ -16,6 +16,7 @@ func _process(delta):
 		position = position.move_toward(destination, PASSENGER_SPEED * delta)
 		if position == destination:
 			is_moving = false
+			Globals.passenger_in_taxi = true
 			queue_free()
 
 func move_to_taxi(taxi):

@@ -112,6 +112,8 @@ func initiate_pickup():
 			closest_distance = distance
 			closest_passenger = passenger
 	if closest_passenger:
+		Globals.destination_type = Globals.DESTINATION_TYPES.pick_random()
+		$Interface.get_node("DialogueText").text = "I want to go to the " + Globals.destination_type
 		closest_passenger.move_to_taxi($Taxi)
 		passengers.erase(closest_passenger)
 

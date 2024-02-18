@@ -11,6 +11,11 @@ const MAX_SPEED : float = 1500.0
 
 const CAR_SPEED : float = 300.0
 
+var passenger_in_taxi : bool = false
+
+const DESTINATION_TYPES: Array = ["Mosque", "School", "University", "Metro", "Library", "Train Station", "Bus Station"]
+var destination_type : String
+
 var middle_of_street
 var speed: float
 

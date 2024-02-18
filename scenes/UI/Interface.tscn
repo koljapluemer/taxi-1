@@ -1,7 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpudyu3ng01lb"]
+[gd_scene load_steps=3 format=3 uid="uid://bpudyu3ng01lb"]
 
 [ext_resource type="PackedScene" uid="uid://ct4vh7nun8gjx" path="res://scenes/UI/RestartButton.tscn" id="1_d3ggk"]
+[ext_resource type="PackedScene" uid="uid://csdpk7s1ubw2r" path="res://scenes/UI/DialogueText.tscn" id="2_4bgan"]
 
 [node name="Interface" type="CanvasLayer"]
 
 [node name="RestartButton" parent="." instance=ExtResource("1_d3ggk")]
+
+[node name="DialogueText" parent="." instance=ExtResource("2_4bgan")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -39.0
+offset_right = 36.0
+offset_bottom = -16.0
+grow_vertical = 0
+text = "..."
