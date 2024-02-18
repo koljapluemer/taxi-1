@@ -81,3 +81,13 @@ func game_over():
 
 func initiate_pickup():
 	print("initiate_pickup")
+	# find passenger closest to taxi
+	var closest_passenger = null
+	var closest_distance = 100000
+	for passenger in passengers:
+		var distance = passenger.position.x - $Taxi.position.x
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_passenger = passenger
+	if closest_passenger:
+		print("closest passenger found")

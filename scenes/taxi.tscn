@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5gkwq4mohq1"]
 
 [ext_resource type="Texture2D" uid="uid://b2tdwsu6wx0uq" path="res://assets/Taxi.png" id="1_y78x8"]
-[ext_resource type="Script" path="res://scenes/taxi.gd" id="2_c7otu"]
+[ext_resource type="Script" path="res://scripts/taxi.gd" id="2_c7otu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5onao"]
 size = Vector2(854.745, 460.247)

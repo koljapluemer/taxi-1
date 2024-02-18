@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddhyplkdb1agc"]
 
+[ext_resource type="Script" path="res://scripts/car.gd" id="1_4capa"]
 [ext_resource type="Texture2D" uid="uid://4ro884yxcehn" path="res://assets/Car.png" id="1_g310n"]
-[ext_resource type="Script" path="res://scenes/car.gd" id="2_53u3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nupge"]
 size = Vector2(5.46823, 200.117)
 
 [node name="Car" type="Area2D"]
 scale = Vector2(0.15, 0.15)
-script = ExtResource("2_53u3y")
+script = ExtResource("1_4capa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(386.667, 240.506)
