@@ -6,10 +6,10 @@ const LANE_HEIGHT = 100
 
 const SCORE_MODIFIER : float = 0.1
 const SPEED_MODIFIER : float = 0.002
-const BASE_SPEED : float = 800.0
+const BASE_SPEED : float = 400.0
 const MAX_SPEED : float = 1500.0
 
-const CAR_SPEED : float = 200.0
+const CAR_SPEED : float = 300.0
 
 var middle_of_street
 var speed: float
