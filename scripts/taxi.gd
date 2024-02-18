@@ -62,10 +62,13 @@ func _process(delta):
 			# put in main's DialogueText
 			# TODO: this is terrible. use a signal or something.
 			get_tree().get_root().get_node("Main").get_node("Interface").get_node("DialogueText").text = "You dropped off your passenger " + str(distance_to_nearest_relevant_tile) + " m away."
-			taxi_stopped_for_dropoff.emit()
+			# reset
+			Globals.passenger_in_taxi = false
+			
 	elif Input.is_action_just_pressed("ui_down"):
 		lane = min(lane + 1, Globals.MAX_LANE)
 		position.y = Globals.middle_of_street + Globals.LANE_HEIGHT * lane
+		Globals.speed = Globals.BASE_SPEED
 		if lane == Globals.MAX_LANE && !Globals.passenger_in_taxi:
 			Globals.speed = 0
 			taxi_stopped_for_pickup.emit()
