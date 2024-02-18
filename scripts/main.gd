@@ -70,7 +70,7 @@ func spawn_cars():
 		var car = car_scene.instantiate()
 		car.position.x = screen_size.x + 100 + score 
 		var random_lane = rng.randi_range(Globals.MIN_LANE + 1, Globals.MAX_LANE - 1)
-		car.position.y = Globals.middle_of_screen + Globals.LANE_HEIGHT * random_lane
+		car.position.y = Globals.middle_of_street + Globals.LANE_HEIGHT * random_lane
 		add_child(car)
 		cars.append(car)
 

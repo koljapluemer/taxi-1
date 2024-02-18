@@ -15,5 +15,7 @@ position = Vector2(124, 321)
 offset = Vector2(576, 324)
 
 [node name="Ground" parent="." instance=ExtResource("3_dc3um")]
+position = Vector2(0, 122)
+scale = Vector2(1, 0.8)
 
 [node name="Interface" parent="." instance=ExtResource("4_55ey7")]
