@@ -48,6 +48,16 @@ func _process(delta):
 	# update ground pos (check if we moved the camera more than 1.5x the screen width)
 	if $Camera.position.x - $Ground.position.x > screen_size.x * 1.2:
 		$Ground.position.x += screen_size.x
+
+	# delete passengers and cars out of screen
+	for passenger in passengers:
+		if passenger.position.x < $Camera.position.x - screen_size.x:
+			passenger.queue_free()
+			passengers.erase(passenger)
+	for car in cars:
+		if car.position.x < $Camera.position.x - screen_size.x:
+			car.queue_free()
+			cars.erase(car)
 	
 	score += delta * Globals.speed
 
@@ -80,14 +90,15 @@ func game_over():
 
 
 func initiate_pickup():
-	print("initiate_pickup")
 	# find passenger closest to taxi
 	var closest_passenger = null
 	var closest_distance = 100000
 	for passenger in passengers:
 		var distance = passenger.position.x - $Taxi.position.x
+		distance = abs(distance)
 		if distance < closest_distance:
 			closest_distance = distance
 			closest_passenger = passenger
 	if closest_passenger:
-		print("closest passenger found")
+		closest_passenger.move_to_taxi($Taxi)
+		passengers.erase(closest_passenger)
