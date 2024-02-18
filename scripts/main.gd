@@ -37,6 +37,15 @@ func new_game():
 
 	Globals.speed = Globals.BASE_SPEED
 
+	# set random buildings for the first 100 tiles in the 0th row
+	var origin_tile_source_id = $TileMap.get_cell_source_id(0, Vector2(0, 0))
+	print(origin_tile_source_id)
+	for i in range(100):
+		# atlas is 4x4
+		var random_atlas_x = randi() % 4
+		var random_atlas_y = randi() % 4
+		$TileMap.set_cell(0, Vector2(i, 0), 0, Vector2(random_atlas_x, random_atlas_y))
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -44,6 +53,9 @@ func _process(delta):
 	spawn_passengers()
 
 	$Camera.position.x += Globals.speed * delta
+	# spawn tiles
+	# they are always on (n, 0)
+	# n is determined by our taxi position
 
 	# update ground pos (check if we moved the camera more than 1.5x the screen width)
 	if $Camera.position.x - $Ground.position.x > screen_size.x * 1.2:

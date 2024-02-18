@@ -1,169 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw63nmlies7iu"]
+[gd_scene load_steps=9 format=3 uid="uid://cw63nmlies7iu"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_lfdpv"]
 [ext_resource type="PackedScene" uid="uid://c5gkwq4mohq1" path="res://scenes/taxi.tscn" id="2_cyvod"]
 [ext_resource type="PackedScene" uid="uid://souetbdwkxmv" path="res://scenes/ground.tscn" id="3_dc3um"]
 [ext_resource type="PackedScene" uid="uid://bpudyu3ng01lb" path="res://scenes/UI/Interface.tscn" id="4_55ey7"]
 [ext_resource type="Texture2D" uid="uid://dnpvuvirgalrl" path="res://assets/spritesheet.png" id="5_nv2yh"]
+[ext_resource type="Script" path="res://scripts/TileMap.gd" id="6_gmxif"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gck4a"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_quff7"]
 texture = ExtResource("5_nv2yh")
 texture_region_size = Vector2i(130, 130)
-8:0/0 = 0
-9:0/0 = 0
-13:0/0 = 0
-14:0/0 = 0
-1:1/0 = 0
-2:1/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+2:2/0 = 0
 3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-11:1/0 = 0
-12:1/0 = 0
-13:1/0 = 0
-14:1/0 = 0
-15:1/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
 0:2/0 = 0
 1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-10:2/0 = 0
-11:2/0 = 0
-12:2/0 = 0
-13:2/0 = 0
-14:2/0 = 0
-15:2/0 = 0
-12:3/0 = 0
-13:3/0 = 0
-14:3/0 = 0
-15:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-4:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-8:5/0 = 0
-9:5/0 = 0
-10:5/0 = 0
-12:5/0 = 0
-13:5/0 = 0
-14:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-8:6/0 = 0
-9:6/0 = 0
-10:6/0 = 0
-12:6/0 = 0
-13:6/0 = 0
-14:6/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-8:8/0 = 0
-9:8/0 = 0
-10:8/0 = 0
-12:8/0 = 0
-13:8/0 = 0
-14:8/0 = 0
-0:9/0 = 0
-1:9/0 = 0
-2:9/0 = 0
-4:9/0 = 0
-5:9/0 = 0
-6:9/0 = 0
-8:9/0 = 0
-9:9/0 = 0
-10:9/0 = 0
-12:9/0 = 0
-13:9/0 = 0
-14:9/0 = 0
-15:9/0 = 0
-0:10/0 = 0
-1:10/0 = 0
-2:10/0 = 0
-4:10/0 = 0
-5:10/0 = 0
-6:10/0 = 0
-8:10/0 = 0
-9:10/0 = 0
-10:10/0 = 0
-12:10/0 = 0
-13:10/0 = 0
-14:10/0 = 0
-15:10/0 = 0
-0:12/0 = 0
-1:12/0 = 0
-2:12/0 = 0
-14:12/0 = 0
-0:13/0 = 0
-1:13/0 = 0
-2:13/0 = 0
-3:13/0 = 0
-4:13/0 = 0
-5:13/0 = 0
-6:13/0 = 0
-7:13/0 = 0
-8:13/0 = 0
-9:13/0 = 0
-10:13/0 = 0
-11:13/0 = 0
-12:13/0 = 0
-13:13/0 = 0
-14:13/0 = 0
-15:13/0 = 0
-0:14/0 = 0
-1:14/0 = 0
-2:14/0 = 0
-3:14/0 = 0
-4:14/0 = 0
-5:14/0 = 0
-6:14/0 = 0
-7:14/0 = 0
-8:14/0 = 0
-9:14/0 = 0
-10:14/0 = 0
-11:14/0 = 0
-12:14/0 = 0
-13:14/0 = 0
-14:14/0 = 0
-15:14/0 = 0
-0:15/0 = 0
-1:15/0 = 0
-0:0/0 = 0
-3:3/0 = 0
-2:3/0 = 0
-1:3/0 = 0
 0:3/0 = 0
-0:1/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+3:2/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_uq86e"]
-tile_size = Vector2i(130, 130)
-sources/1 = SubResource("TileSetAtlasSource_gck4a")
+[sub_resource type="TileSet" id="TileSet_utjhf"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_quff7")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lfdpv")
@@ -181,8 +47,7 @@ scale = Vector2(1, 0.8)
 [node name="Interface" parent="." instance=ExtResource("4_55ey7")]
 
 [node name="TileMap" type="TileMap" parent="."]
-texture_filter = 1
-scale = Vector2(1.5, 1.5)
-tile_set = SubResource("TileSet_uq86e")
-rendering_quadrant_size = 32
+tile_set = SubResource("TileSet_utjhf")
+rendering_quadrant_size = 128
 format = 2
+script = ExtResource("6_gmxif")
