@@ -8,7 +8,6 @@ var passengers: Array = []
 
 var screen_size: Vector2 
 
-var score = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +24,7 @@ func new_game():
 	$Camera.position.x = 0
 	$Ground.position.x = 0
 	$Taxi.reset_position()
-	score = 0
+
 	# delete all cars and passengers
 	for car in cars:
 		car.queue_free()
@@ -36,6 +35,10 @@ func new_game():
 	get_tree().paused = false
 
 	Globals.speed = Globals.BASE_SPEED
+	Globals.progress = 0
+	Globals.score = 0
+	Globals.destination_type = ""
+	Globals.passenger_in_taxi = false
 
 	# set random buildings for the first tiles in the 0th row
 	var origin_tile_source_id = $TileMap.get_cell_source_id(0, Vector2(0, 0))
@@ -70,7 +73,9 @@ func _process(delta):
 			car.queue_free()
 			cars.erase(car)
 	
-	score += delta * Globals.speed
+	Globals.progress += delta * Globals.speed
+	Globals.score += delta * Globals.speed / 100
+	$Interface.get_node("ScoreText").text = "Score: " + str(int(Globals.score))
 
 func _on_button_button_up():
 	pass
@@ -79,7 +84,7 @@ func spawn_cars():
 	var rng = RandomNumberGenerator.new()
 	if rng.randi_range(0, 30) == 0:
 		var car = car_scene.instantiate()
-		car.position.x = screen_size.x + 100 + score 
+		car.position.x = screen_size.x + 100 + Globals.progress 
 		var random_lane = rng.randi_range(Globals.MIN_LANE + 1, Globals.MAX_LANE - 1)
 		car.position.y = Globals.middle_of_street + Globals.LANE_HEIGHT * random_lane
 		add_child(car)
@@ -89,7 +94,7 @@ func spawn_passengers():
 	var rng = RandomNumberGenerator.new()
 	if rng.randi_range(0, 50) == 0:
 		var passenger = passenger_scene.instantiate()
-		passenger.position.x = screen_size.x + 100 + score 
+		passenger.position.x = screen_size.x + 100 + Globals.progress 
 		# spawn at bottom of screen
 		passenger.position.y = randf_range(screen_size.y - 130, screen_size.y - 100)
 		add_child(passenger)

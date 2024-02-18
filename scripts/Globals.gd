@@ -19,13 +19,12 @@ var destination_type : String
 var middle_of_street
 var speed: float
 
+var progress = 0
+var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	middle_of_street = get_viewport().size.y / 2 + 50
-	speed = BASE_SPEED
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

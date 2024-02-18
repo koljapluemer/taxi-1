@@ -12,5 +12,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Taxi":
+		# subtract 1000 points from the score, but cap it at 0
+		Globals.score = max(0, Globals.score - 1000)
 		# call game_over in main scene to end the game 
-		get_tree().get_root().get_node("Main").game_over()
+		# get_tree().get_root().get_node("Main").game_over()
