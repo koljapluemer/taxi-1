@@ -86,11 +86,10 @@ func _process(delta):
 
 
 func spawn_cars():
-	var rng = RandomNumberGenerator.new()
-	if rng.randi_range(0, 30) == 0:
+	if randi_range(0, 30) == 0:
 		var car = car_scene.instantiate()
 		car.position.x = screen_size.x + 100 + Globals.progress 
-		var random_lane = rng.randi_range(Globals.MIN_LANE + 1, Globals.MAX_LANE - 1)
+		var random_lane = randi_range(Globals.MIN_LANE + 1, Globals.MAX_LANE - 1)
 		car.position.y = Globals.middle_of_street + Globals.LANE_HEIGHT * random_lane
 		car.hit_taxi.connect(loose_health)
 		add_child(car)
@@ -98,14 +97,19 @@ func spawn_cars():
 
 
 func spawn_passengers():
-	var rng = RandomNumberGenerator.new()
-	if rng.randi_range(0, 50) == 0:
-		var passenger = passenger_scene.instantiate()
-		passenger.position.x = screen_size.x + 100 + Globals.progress 
-		# spawn at bottom of screen
-		passenger.position.y = randf_range(screen_size.y - 130, screen_size.y - 100)
-		add_child(passenger)
-		passengers.append(passenger)
+	# if no passengers, spawn one
+	if passengers.size() == 0:
+		spawn_passenger()
+	if randi_range(0, 50) == 0:
+		spawn_passenger()
+
+func spawn_passenger():
+	var passenger = passenger_scene.instantiate()
+	passenger.position.x = screen_size.x + 100 + Globals.progress 
+	# spawn at bottom of screen
+	passenger.position.y = randf_range(screen_size.y - 130, screen_size.y - 100)
+	add_child(passenger)
+	passengers.append(passenger)
 
 func game_over():
 	$Interface.get_node("RestartButton").show()
