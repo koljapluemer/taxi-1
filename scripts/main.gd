@@ -73,9 +73,10 @@ func _process(delta):
 			passengers.erase(passenger)
 	for car in cars:
 		if car.position.x < $Camera.position.x - screen_size.x:
-			car.queue_free()
-			cars.erase(car)
-	
+			if is_instance_valid(car):
+				car.queue_free()
+				cars.erase(car)
+		
 	Globals.progress += delta * Globals.speed
 	Globals.score += delta * Globals.speed / 100
 	$Interface.get_node("ScoreText").text = "Score: " + str(int(Globals.score))
