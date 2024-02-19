@@ -19,8 +19,9 @@ var destination_type : String
 var middle_of_street
 var speed: float
 
-var progress = 0
-var score = 0
+var progress
+var score
+var driver_rating
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -9,7 +9,9 @@ var passengers: Array = []
 var screen_size: Vector2 
 
 var health = 100
+var money = 0
 
+var current_ride: Ride
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +20,7 @@ func _ready():
 	new_game()
 	# Signal connections
 	$Taxi.taxi_stopped_for_pickup.connect(initiate_pickup)
+	$Taxi.taxi_stopped_for_dropoff.connect(end_ride)
 
 func new_game():
 	$Interface.get_node("RestartButton").hide()
@@ -40,6 +43,7 @@ func new_game():
 	Globals.score = 0
 	Globals.destination_type = ""
 	Globals.passenger_in_taxi = false
+	Globals.driver_rating = 2.5
 
 	# set random buildings for the first tiles in the 0th row
 	var origin_tile_source_id = $TileMap.get_cell_source_id(0, Vector2(0, 0))
@@ -81,8 +85,6 @@ func _process(delta):
 	Globals.score += delta * Globals.speed / 100
 	$Interface.get_node("ScoreText").text = "Score: " + str(int(Globals.score))
 
-func _on_button_button_up():
-	pass
 
 func spawn_cars():
 	var rng = RandomNumberGenerator.new()
@@ -124,6 +126,7 @@ func initiate_pickup():
 	if closest_passenger:
 		Globals.destination_type = Globals.DESTINATION_TYPES.pick_random()
 		$Interface.get_node("DialogueText").text = "I want to go to the " + Globals.destination_type
+		closest_passenger.passenger_got_in_taxi.connect(start_ride)
 		closest_passenger.move_to_taxi($Taxi)
 
 
@@ -140,4 +143,15 @@ func loose_health():
 
 func update_interface():
 	$Interface.get_node("HealthBar").value = health
+	$Interface.get_node("RatingText").text = "Rating: " + str(snapped(Globals.driver_rating, 0.1)) + " / 5"
+	$Interface.get_node("MoneyText").text = "Money: £" + str(int(money)) 
 
+func start_ride(passenger):
+	current_ride = Ride.new()
+	current_ride.money = passenger.money
+
+func end_ride():
+	money += current_ride.money
+	Globals.driver_rating = (Globals.driver_rating + current_ride.rating) / 2
+	current_ride = null
+	update_interface()

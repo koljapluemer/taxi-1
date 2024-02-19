@@ -19,7 +19,10 @@ func reset_position():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# move up and down a lane_height on arrow key press (within limits)
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up") && lane > Globals.MIN_LANE:
+		# if we're currently waiting for passenger on lowest lane, disallow action
+		if Globals.speed == 0 && lane == Globals.MAX_LANE && !Globals.passenger_in_taxi:
+			return
 		lane = max(lane - 1, Globals.MIN_LANE)
 		position.y = Globals.middle_of_street + Globals.LANE_HEIGHT * lane
 		Globals.speed = Globals.BASE_SPEED
@@ -68,8 +71,9 @@ func _process(delta):
 			Globals.score += dropoff_score
 			# reset
 			Globals.passenger_in_taxi = false
+			taxi_stopped_for_dropoff.emit()
 
-	elif Input.is_action_just_pressed("ui_down"):
+	elif Input.is_action_just_pressed("ui_down") && lane < Globals.MAX_LANE:
 		lane = min(lane + 1, Globals.MAX_LANE)
 		position.y = Globals.middle_of_street + Globals.LANE_HEIGHT * lane
 		Globals.speed = Globals.BASE_SPEED
