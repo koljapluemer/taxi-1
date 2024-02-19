@@ -150,8 +150,28 @@ func start_ride(passenger):
 	current_ride = Ride.new()
 	current_ride.money = passenger.money
 
-func end_ride():
+func end_ride(distance_to_target):
 	money += current_ride.money
+	# if distance less than 200m, add a star to rating
+	# if less than 70m, add 2
+	# if less than 20, add 3:
+	if distance_to_target < 100:
+		current_ride.rating += 1
+	if distance_to_target < 50:
+		current_ride.rating += 1
+	if distance_to_target < 20:
+		current_ride.rating += 1
+
+	if distance_to_target > 250
+		current_ride.rating -= 1
+	if distance_to_target > 400
+		current_ride.rating -= 1
+	# clamp between 1 and 5
+	current_ride.rating = clamp(current_ride.rating, 1, 5)
+
+	var message = "You dropped the passenger off " + str(distance_to_target) + "m away. This earned you £" + str(current_ride.money) + " and a " + str(current_ride.rating) + " star rating."
+	$Interface.get_node("DialogueText").text = message
+
 	Globals.driver_rating = (Globals.driver_rating + current_ride.rating) / 2
 	current_ride = null
 	update_interface()

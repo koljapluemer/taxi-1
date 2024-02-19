@@ -60,18 +60,10 @@ func _process(delta):
 				i += 1
 			var tile_x = tile_map.map_to_local(nearest_relevant_tile).x
 			var distance_to_nearest_relevant_tile = abs(tile_x - position.x)
-			# distance in m: divide by 10 and round
-			distance_to_nearest_relevant_tile = round(distance_to_nearest_relevant_tile / 10)
-			# put in main's DialogueText
-			# TODO: this is terrible. use a signal or something.
-			get_tree().get_root().get_node("Main").get_node("Interface").get_node("DialogueText").text = "You dropped off your passenger " + str(distance_to_nearest_relevant_tile) + " m away."
-			# add score based on distance
-			# +1000 for perfect dropoff, minimum 5 at 500m distance
-			var dropoff_score = max(5, 1000 - distance_to_nearest_relevant_tile * 2)
-			Globals.score += dropoff_score
-			# reset
+			# distance in "m": divide and round
+			distance_to_nearest_relevant_tile = round(distance_to_nearest_relevant_tile / 8)
 			Globals.passenger_in_taxi = false
-			taxi_stopped_for_dropoff.emit()
+			taxi_stopped_for_dropoff.emit(distance_to_nearest_relevant_tile)
 
 	elif Input.is_action_just_pressed("ui_down") && lane < Globals.MAX_LANE:
 		lane = min(lane + 1, Globals.MAX_LANE)
