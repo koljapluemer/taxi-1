@@ -12,7 +12,43 @@ const CAR_SPEED : float = 300.0
 
 var passenger_in_taxi : bool = false
 
-const DESTINATION_TYPES: Array = ["Mosque", "School", "University", "Metro", "Library", "Train Station", "Bus Station"]
+const DESTINATION_TYPES = [
+	{
+		"english": "Mosque",
+		"egyptian": "مسجد",
+		"transliteration": "masgid"
+	},
+	{
+		"english": "School",
+		"egyptian": "مدرسة",
+		"transliteration": "madrasa"
+	},
+	{
+		"english": "University",
+		"egyptian": "جامعة",
+		"transliteration": "gam3a"
+	},
+	{
+		"english": "Metro",
+		"egyptian": "مترو",
+		"transliteration": "metro"
+	},
+	{
+		"english": "Library",
+		"egyptian": "مكتبة",
+		"transliteration": "maktaba"
+	},
+	{
+		"english": "Train Station",
+		"egyptian": "محطة القطر",
+		"transliteration": "màHàTtet el àTr"
+	},
+	{
+		"english": "Bus Station",
+		"egyptian": "محطة الاوتوبيس",
+		"transliteration": "màHàTtet el otobees"
+	}
+]
 var destination_type : String
 
 var middle_of_street

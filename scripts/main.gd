@@ -159,8 +159,6 @@ func initiate_pickup():
 			closest_distance = distance
 			closest_passenger = passenger
 	if closest_passenger:
-		Globals.destination_type = Globals.DESTINATION_TYPES.pick_random()
-		# $Interface.get_node("InstructionText").text = "I want to go to the " + Globals.destination_type
 		closest_passenger.passenger_got_in_taxi.connect(start_ride)
 		closest_passenger.move_to_taxi($Taxi)
 
@@ -183,6 +181,9 @@ func update_interface():
 
 func start_ride(passenger):
 	$Interface.get_node("InstructionText").text = "Drive the passenger as close as possible to his destination."
+	var destination_obj = Globals.DESTINATION_TYPES.pick_random()
+	Globals.destination_type = destination_obj.english
+	$Interface.get_node("PassengerUI").get_node("Label").text = "ممكن توصلنى ال" + destination_obj.egyptian + "؟"
 	$Interface.get_node("PassengerUI").show()
 	current_ride = Ride.new()
 	current_ride.money = passenger.money
