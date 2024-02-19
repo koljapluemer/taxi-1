@@ -6,6 +6,8 @@ var passenger_scene = preload("res://scenes/passenger.tscn")
 var cars: Array = []
 var passengers: Array = []
 
+var highscores: Array = []
+
 var screen_size: Vector2 
 
 var health = 100
@@ -13,8 +15,11 @@ var money = 0
 
 var current_ride: Ride
 
+var save_path = "user://scores.sav"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	load_data()
 	randomize()
 	screen_size = get_window().size
 	new_game()
@@ -44,11 +49,15 @@ func new_game():
 	Globals.passenger_in_taxi = false
 	Globals.driver_rating = 2.5
 
+	money = 0
+
 	# set every building at least once (4x4)
 	var origin_tile_source_id = $TileMap.get_cell_source_id(0, Vector2(0, 0))
+	var x_pos = 0
 	for i in range(4):
 		for j in range(4):
-			$TileMap.set_cell(0, Vector2(i+j, 0), 0, Vector2(i, j))
+			$TileMap.set_cell(0, Vector2(x_pos, 0), 0, Vector2(i, j))
+			x_pos += 1
 
 
 	health = 100
@@ -113,6 +122,14 @@ func spawn_passenger():
 
 func game_over():
 	$Interface.get_node("RestartButton").show()
+	# check if we have a highscore (top 10) and add it to the list
+	if highscores.size() < 10 or money > highscores[9]:
+		highscores.append(money)
+		highscores.sort()
+		highscores.reverse()
+		highscores = highscores.slice(0, 10)
+	save_data()
+
 	get_tree().paused = true
 
 
@@ -178,3 +195,17 @@ func end_ride(distance_to_target):
 	Globals.driver_rating = (Globals.driver_rating + current_ride.rating) / 2
 	current_ride = null
 	update_interface()
+
+
+func save_data():
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	var data = {
+		"highscores": highscores
+	}
+	file.store_line(JSON.stringify(data))
+
+func load_data():
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	if file:
+		var data = JSON.parse_string(file.get_as_text())
+		highscores = data.highscores
