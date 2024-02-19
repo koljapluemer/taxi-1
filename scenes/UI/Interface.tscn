@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpudyu3ng01lb"]
+[gd_scene load_steps=4 format=3 uid="uid://bpudyu3ng01lb"]
 
 [ext_resource type="PackedScene" uid="uid://ct4vh7nun8gjx" path="res://scenes/UI/RestartButton.tscn" id="1_d3ggk"]
 [ext_resource type="PackedScene" uid="uid://csdpk7s1ubw2r" path="res://scenes/UI/DialogueText.tscn" id="2_4bgan"]
+[ext_resource type="PackedScene" uid="uid://vm5ihsytttsb" path="res://scenes/UI/HealthBar.tscn" id="3_op2ip"]
 
 [node name="Interface" type="CanvasLayer"]
 
@@ -22,8 +23,38 @@ text = "..."
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -111.0
-offset_right = -63.0
-offset_bottom = 23.0
+offset_left = -256.0
+offset_top = 48.0
+offset_right = -73.0
+offset_bottom = 71.0
 grow_horizontal = 0
+size_flags_horizontal = 0
 text = "Score:"
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = 896.0
+offset_top = 8.0
+offset_right = 952.0
+offset_bottom = 31.0
+text = "Health:"
+
+[node name="HealthBar" parent="." instance=ExtResource("3_op2ip")]
+offset_left = 896.0
+offset_top = 32.0
+offset_right = 1140.0
+offset_bottom = 40.0
+show_percentage = false
+
+[node name="RatingText" type="Label" parent="."]
+offset_left = 896.0
+offset_top = 80.0
+offset_right = 1104.0
+offset_bottom = 103.0
+text = "Rating:"
+
+[node name="MoneyText" type="Label" parent="."]
+offset_left = 896.0
+offset_top = 112.0
+offset_right = 1128.0
+offset_bottom = 135.0
+text = "Money:"

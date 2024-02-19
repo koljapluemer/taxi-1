@@ -1,2 +1,3 @@
 - hunt `TODO:`
 - prevent endless loop in searching for tile when it's the start of the game and such a tile is still missing
+- prevent starting the car again with going up when already at top and down when already at bottom
