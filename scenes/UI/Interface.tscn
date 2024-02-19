@@ -43,6 +43,7 @@ offset_left = 896.0
 offset_top = 32.0
 offset_right = 1140.0
 offset_bottom = 40.0
+value = 100.0
 show_percentage = false
 
 [node name="RatingText" type="Label" parent="."]

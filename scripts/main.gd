@@ -8,6 +8,7 @@ var passengers: Array = []
 
 var screen_size: Vector2 
 
+var health = 100
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,6 +46,8 @@ func new_game():
 	for i in range(10):
 		spawn_random_tile(i, 0)
 
+	health = 100
+	update_interface()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -87,8 +90,10 @@ func spawn_cars():
 		car.position.x = screen_size.x + 100 + Globals.progress 
 		var random_lane = rng.randi_range(Globals.MIN_LANE + 1, Globals.MAX_LANE - 1)
 		car.position.y = Globals.middle_of_street + Globals.LANE_HEIGHT * random_lane
+		car.hit_taxi.connect(loose_health)
 		add_child(car)
 		cars.append(car)
+
 
 func spawn_passengers():
 	var rng = RandomNumberGenerator.new()
@@ -125,3 +130,13 @@ func spawn_random_tile(x, y):
 		var random_atlas_x = randi() % 4
 		var random_atlas_y = randi() % 4
 		$TileMap.set_cell(0, Vector2(x, y), 0, Vector2(random_atlas_x, random_atlas_y))
+
+func loose_health():
+	health -= 10
+	if health <= 0:
+		game_over()
+	update_interface()
+
+func update_interface():
+	$Interface.get_node("HealthBar").value = health
+
