@@ -40,7 +40,6 @@ func new_game():
 
 	Globals.speed = Globals.BASE_SPEED
 	Globals.progress = 0
-	Globals.score = 0
 	Globals.destination_type = ""
 	Globals.passenger_in_taxi = false
 	Globals.driver_rating = 2.5
@@ -82,8 +81,6 @@ func _process(delta):
 				cars.erase(car)
 		
 	Globals.progress += delta * Globals.speed
-	Globals.score += delta * Globals.speed / 100
-	$Interface.get_node("ScoreText").text = "Score: " + str(int(Globals.score))
 
 
 func spawn_cars():
@@ -162,9 +159,9 @@ func end_ride(distance_to_target):
 	if distance_to_target < 20:
 		current_ride.rating += 1
 
-	if distance_to_target > 250
+	if distance_to_target > 250:
 		current_ride.rating -= 1
-	if distance_to_target > 400
+	if distance_to_target > 400:
 		current_ride.rating -= 1
 	# clamp between 1 and 5
 	current_ride.rating = clamp(current_ride.rating, 1, 5)

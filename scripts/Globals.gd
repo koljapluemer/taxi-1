@@ -4,7 +4,6 @@ const MAX_LANE = 2
 const MIN_LANE = -3
 const LANE_HEIGHT = 100
 
-const SCORE_MODIFIER : float = 0.1
 const SPEED_MODIFIER : float = 0.002
 const BASE_SPEED : float = 400.0
 const MAX_SPEED : float = 1500.0
@@ -20,7 +19,6 @@ var middle_of_street
 var speed: float
 
 var progress
-var score
 var driver_rating
 
 # Called when the node enters the scene tree for the first time.
