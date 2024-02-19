@@ -29,6 +29,9 @@ func _ready():
 
 func new_game():
 	$Interface.get_node("RestartButton").hide()
+	$Interface.get_node("Highscores").hide()
+	$Interface.get_node("PassengerUI").hide()
+	$Interface.get_node("InstructionText").text = "Welcome to Cairo Taxi! Pick up passengers and drop them off at their destination."
 	# reset Taxi, Camera, Ground and speed
 	$Camera.position.x = 0
 	$Ground.position.x = 0
@@ -130,10 +133,22 @@ func game_over():
 		highscores = highscores.slice(0, 10)
 	save_data()
 
+	$Interface.get_node("Highscores").show()
+	# clear highscores list
+	$Interface.get_node("Highscores").clear()
+	$Interface.get_node("Highscores").add_item("You earned: £" + str(int(money)))
+	$Interface.get_node("Highscores").add_item("")
+	$Interface.get_node("Highscores").add_item("Highscores:")
+	# loop highscores and list
+	for item in highscores:
+		$Interface.get_node("Highscores").add_item("£" + str(int(item)))
+
+
 	get_tree().paused = true
 
 
 func initiate_pickup():
+	$Interface.get_node("InstructionText").text = "Waiting for passenger to get in..."
 	# find passenger closest to taxi
 	var closest_passenger = null
 	var closest_distance = 100000
@@ -145,7 +160,7 @@ func initiate_pickup():
 			closest_passenger = passenger
 	if closest_passenger:
 		Globals.destination_type = Globals.DESTINATION_TYPES.pick_random()
-		$Interface.get_node("DialogueText").text = "I want to go to the " + Globals.destination_type
+		# $Interface.get_node("InstructionText").text = "I want to go to the " + Globals.destination_type
 		closest_passenger.passenger_got_in_taxi.connect(start_ride)
 		closest_passenger.move_to_taxi($Taxi)
 
@@ -167,10 +182,13 @@ func update_interface():
 	$Interface.get_node("MoneyText").text = "Money: £" + str(int(money)) 
 
 func start_ride(passenger):
+	$Interface.get_node("InstructionText").text = "Drive the passenger as close as possible to his destination."
+	$Interface.get_node("PassengerUI").show()
 	current_ride = Ride.new()
 	current_ride.money = passenger.money
 
 func end_ride(distance_to_target):
+	$Interface.get_node("PassengerUI").hide()
 	money += current_ride.money
 	# if distance less than 200m, add a star to rating
 	# if less than 70m, add 2
@@ -190,7 +208,7 @@ func end_ride(distance_to_target):
 	current_ride.rating = clamp(current_ride.rating, 1, 5)
 
 	var message = "You dropped the passenger off " + str(distance_to_target) + "m away. This earned you £" + str(current_ride.money) + " and a " + str(current_ride.rating) + " star rating."
-	$Interface.get_node("DialogueText").text = message
+	$Interface.get_node("InstructionText").text = message
 
 	Globals.driver_rating = (Globals.driver_rating + current_ride.rating) / 2
 	current_ride = null

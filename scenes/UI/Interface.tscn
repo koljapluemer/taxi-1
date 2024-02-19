@@ -1,24 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpudyu3ng01lb"]
+[gd_scene load_steps=5 format=3 uid="uid://bpudyu3ng01lb"]
 
 [ext_resource type="PackedScene" uid="uid://ct4vh7nun8gjx" path="res://scenes/UI/RestartButton.tscn" id="1_d3ggk"]
-[ext_resource type="PackedScene" uid="uid://csdpk7s1ubw2r" path="res://scenes/UI/DialogueText.tscn" id="2_4bgan"]
+[ext_resource type="PackedScene" uid="uid://csdpk7s1ubw2r" path="res://scenes/UI/InstructionText.tscn" id="2_rn2w1"]
 [ext_resource type="PackedScene" uid="uid://vm5ihsytttsb" path="res://scenes/UI/HealthBar.tscn" id="3_op2ip"]
+[ext_resource type="PackedScene" uid="uid://cto7jdtg2dapd" path="res://scenes/UI/PassengerUI.tscn" id="4_423tr"]
 
 [node name="Interface" type="CanvasLayer"]
 
 [node name="RestartButton" parent="." instance=ExtResource("1_d3ggk")]
-
-[node name="DialogueText" parent="." instance=ExtResource("2_4bgan")]
-anchors_preset = 2
+anchors_preset = 7
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = -32.0
-offset_right = 192.0
-offset_bottom = -9.0
+offset_left = -74.0
+offset_top = -223.0
+offset_right = 74.0
+offset_bottom = -160.0
 grow_vertical = 0
+
+[node name="InstructionText" parent="." instance=ExtResource("2_rn2w1")]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 193.0
+offset_bottom = 33.0
 size_flags_horizontal = 0
 text = "..."
+justification_flags = 161
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = 896.0
@@ -47,3 +53,23 @@ offset_top = 80.0
 offset_right = 1128.0
 offset_bottom = 103.0
 text = "Money:"
+
+[node name="Highscores" type="ItemList" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -291.0
+offset_right = 100.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 15
+item_count = 1
+item_0/text = "Highscores:"
+
+[node name="PassengerUI" parent="." instance=ExtResource("4_423tr")]

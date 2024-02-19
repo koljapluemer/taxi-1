@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cto7jdtg2dapd"]
+
+[ext_resource type="Texture2D" uid="uid://wt5y6fqqeisu" path="res://assets/Passenger.png" id="1_7po3f"]
+
+[node name="PassengerUI" type="CanvasGroup"]
+
+[node name="Passenger" type="Sprite2D" parent="."]
+position = Vector2(61, 584)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_7po3f")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 104.0
+offset_top = 580.0
+offset_right = 503.0
+offset_bottom = 622.0
+theme_override_font_sizes/font_size = 30
+text = "ممكن توصلنى (المستشفى)"
