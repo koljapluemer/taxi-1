@@ -44,10 +44,12 @@ func new_game():
 	Globals.passenger_in_taxi = false
 	Globals.driver_rating = 2.5
 
-	# set random buildings for the first tiles in the 0th row
+	# set every building at least once (4x4)
 	var origin_tile_source_id = $TileMap.get_cell_source_id(0, Vector2(0, 0))
-	for i in range(10):
-		spawn_random_tile(i, 0)
+	for i in range(4):
+		for j in range(4):
+			$TileMap.set_cell(0, Vector2(i+j, 0), 0, Vector2(i, j))
+
 
 	health = 100
 	update_interface()
